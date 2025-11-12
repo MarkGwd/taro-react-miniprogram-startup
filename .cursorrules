@@ -1,0 +1,119 @@
+# 春笋家长小程序 - Cursor 开发规则
+
+## 项目概述
+这是一个基于 Taro 4.1.7 + React 18 的微信小程序项目，为春笋英语学员家长提供品牌信息、学情战报和个人管理功能。
+
+## 技术栈
+- **框架**: Taro 4.1.7 + React 18
+- **语言**: TypeScript (策略性使用)
+- **样式**: Sass + 自定义设计系统
+- **状态管理**: Zustand
+- **目标平台**: 微信小程序
+
+## TypeScript 使用策略
+- **必须使用 TS**: API 接口、状态管理、复杂组件 Props、配置常量
+- **可以使用 JS**: 简单页面组件、简单工具函数、样式文件、Mock 数据
+- **原则**: 渐进式引入，重点保护数据流
+
+## 代码规范
+
+### 文件命名
+- 组件文件: PascalCase (如: UserCard.tsx)
+- 工具文件: kebab-case (如: user-helper.js)
+- 样式文件: kebab-case (如: user-card.scss)
+
+### 组件规范
+- 使用函数式组件 + Hooks
+- 复杂组件使用 TypeScript
+- 简单组件可以使用 JavaScript
+- 组件 Props 使用 TypeScript 接口定义
+
+### 样式规范
+- 使用 Sass + 自定义设计系统
+- 不使用 Tailwind CSS (小程序兼容性问题)
+- 使用 BEM 命名规范
+- 响应式设计使用 rpx 单位
+
+### 状态管理
+- 使用 Zustand 进行状态管理
+- 按功能模块拆分 store
+- 使用 TypeScript 定义状态类型
+
+## 项目结构
+```
+src/
+├── types/           # TypeScript 类型定义
+├── stores/          # Zustand 状态管理
+├── components/      # 组件库
+├── pages/           # 页面
+├── utils/           # 工具函数
+├── styles/          # 样式文件
+├── constants/       # 常量定义
+└── mock/           # Mock 数据
+```
+
+## 开发规范
+
+### 组件开发
+- 优先使用 Taro 原生组件
+- 自定义组件按功能分类 (common/business/layout)
+- 复杂组件使用 TypeScript
+- 简单组件可以使用 JavaScript
+
+### 样式开发
+- 基于设计稿创建 Sass 变量
+- 使用设计系统变量
+- 避免使用 fixed 定位
+- 注意小程序兼容性
+
+### 状态管理
+- 使用 Zustand 创建 store
+- 按功能模块拆分状态
+- 使用 TypeScript 定义状态类型
+- 实现数据持久化
+
+### 页面开发
+- 简单页面可以使用 JavaScript
+- 复杂页面使用 TypeScript
+- 学情战报详情使用 WebView
+- 注意小程序性能优化
+
+## 特殊要求
+
+### 小程序适配
+- 使用 rpx 单位适配不同屏幕
+- 避免使用 fixed 定位
+- 注意安全区域适配
+- 避免频繁 setData
+
+### 性能优化
+- 图片懒加载
+- 列表虚拟化
+- 避免频繁重渲染
+- 合理使用缓存
+
+### 设计稿转换
+- 基于 Google Stitch 设计稿
+- 提取设计规范创建 Sass 变量
+- 转换为 Taro 组件
+- 确保小程序兼容性
+
+## 开发流程
+1. 分析设计稿和需求
+2. 创建组件结构
+3. 实现功能逻辑
+4. 样式适配和优化
+5. 测试和调试
+
+## 注意事项
+- 优先考虑小程序兼容性
+- 注意性能优化
+- 合理使用 TypeScript
+- 遵循设计规范
+- 保持代码简洁
+
+## 常用命令
+- 开发: `npm run dev:weapp`
+- 构建: `npm run build:weapp`
+- 类型检查: `tsc --noEmit`
+- 样式检查: `stylelint src/**/*.scss`

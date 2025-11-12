@@ -1,0 +1,61 @@
+// Empty 组件样式
+$primary-color: #13ec13;
+$text-light: #9ca3af;
+$text-secondary: #6b7280;
+$text-primary: #1f2937;
+$border-color: #e5e7eb;
+
+.empty-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 120rpx 40rpx;
+  text-align: center;
+}
+
+.empty-icon {
+  margin-bottom: 24rpx;
+
+  .icon-text {
+    font-size: 120rpx;
+    line-height: 1;
+    opacity: 0.6;
+  }
+}
+
+.empty-text {
+  color: $text-primary;
+  font-size: 32rpx;
+  font-weight: 500;
+  margin-bottom: 16rpx;
+}
+
+.empty-description {
+  color: $text-secondary;
+  font-size: 28rpx;
+  line-height: 1.5;
+  margin-bottom: 40rpx;
+  max-width: 400rpx;
+}
+
+.empty-action {
+  padding: 12rpx 24rpx;
+  background-color: transparent;
+  border-radius: 20rpx;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 2rpx solid $primary-color;
+  display: inline-block;
+
+  &:active {
+    background-color: rgba($primary-color, 0.1);
+    transform: scale(0.95);
+  }
+
+  .action-text {
+    color: $primary-color;
+    font-size: 26rpx;
+    font-weight: 500;
+  }
+}

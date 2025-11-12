@@ -1,0 +1,506 @@
+// 设计系统变量
+$primary-color: #13ec13;
+$background-light: #f6f8f6;
+$text-primary: #1f2937;
+$text-secondary: #6b7280;
+$text-light: #9ca3af;
+$border-color: #e5e7eb;
+$white: #ffffff;
+$red: #ef4444;
+
+.profile {
+  background-color: $background-light;
+  min-height: 100vh;
+  padding-top: 180rpx; // 为自定义导航栏留出空间，确保不被遮挡
+  padding-bottom: 200rpx; // 为 TabBar 留出空间
+
+  .content {
+    padding: 0 32rpx;
+    // 未登录状态时垂直居中
+    min-height: calc(100vh - 380rpx); // 减去导航栏和 TabBar 高度
+    display: flex;
+    flex-direction: column;
+  }
+
+  // 用户信息区域
+  .user-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 48rpx 0;
+
+    // 未登录状态时垂直居中
+    &:only-child {
+      flex: 1;
+      justify-content: center;
+      padding: 0;
+    }
+
+    // 可点击的用户信息区域
+    .user-info-clickable {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+
+      &:active .user-avatar {
+        transform: scale(0.95);
+      }
+
+      &:active .user-name {
+        color: $primary-color;
+      }
+    }
+
+    .user-avatar-container {
+      position: relative;
+      margin-bottom: 24rpx;
+
+      .user-avatar {
+        width: 192rpx;
+        height: 192rpx;
+        border-radius: 50%;
+        border: 4rpx solid $white;
+        box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s;
+      }
+
+      .edit-icon {
+        position: absolute;
+        bottom: 8rpx;
+        right: 8rpx;
+        width: 48rpx;
+        height: 48rpx;
+        background-color: $primary-color;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 3rpx solid $white;
+      }
+    }
+
+    .user-name {
+      font-size: 40rpx;
+      font-weight: bold;
+      color: $text-primary;
+      margin-bottom: 16rpx;
+      transition: color 0.2s;
+    }
+
+    .user-phone {
+      font-size: 28rpx;
+      color: $text-secondary;
+    }
+
+    .login-button {
+      width: 400rpx;
+      height: 88rpx;
+      background-color: $primary-color;
+      color: $white;
+      border-radius: 44rpx;
+      font-size: 32rpx;
+      font-weight: 600;
+      margin-top: 32rpx;
+      border: none;
+      box-shadow: 0 8rpx 24rpx rgba(19, 236, 19, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &::after {
+        border: none;
+      }
+    }
+
+    .skip-login {
+      margin-top: 32rpx;
+      padding: 16rpx 32rpx;
+      cursor: pointer;
+
+      .skip-login-text {
+        font-size: 28rpx;
+        color: $text-secondary;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  // 学生信息区域
+  .students-section {
+    margin-top: 64rpx;
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32rpx;
+
+      .section-title {
+        font-size: 36rpx;
+        font-weight: bold;
+        color: $text-primary;
+      }
+
+      .add-student-btn {
+        display: flex;
+        align-items: center;
+        gap: 8rpx;
+        padding: 8rpx 16rpx;
+
+        .add-icon {
+          font-size: 32rpx;
+          color: $primary-color;
+          font-weight: bold;
+        }
+
+        .add-text {
+          font-size: 28rpx;
+          color: $primary-color;
+          font-weight: 500;
+        }
+      }
+    }
+
+    .students-list {
+      .student-item-wrapper {
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 24rpx;
+        border-radius: 16rpx;
+
+        .student-item {
+          display: flex;
+          align-items: center;
+          gap: 32rpx;
+          background-color: $white;
+          border-radius: 16rpx;
+          padding: 32rpx;
+          box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+          transition: transform 0.3s ease;
+          position: relative;
+          z-index: 2;
+
+          .student-avatar {
+            width: 112rpx;
+            height: 112rpx;
+            border-radius: 50%;
+            flex-shrink: 0;
+          }
+
+          .student-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+
+            .student-name {
+              font-size: 32rpx;
+              font-weight: 500;
+              color: $text-primary;
+              margin-bottom: 8rpx;
+              line-height: 1.2;
+            }
+
+            .student-school {
+              font-size: 28rpx;
+              color: $text-light;
+              line-height: 1.2;
+              margin-top: 4rpx;
+            }
+          }
+
+          .swipe-hint {
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 4rpx;
+            color: $text-light;
+
+            .swipe-icon {
+              font-size: 36rpx;
+              font-weight: bold;
+              line-height: 1;
+              display: flex;
+              align-items: center;
+            }
+
+            .swipe-text {
+              font-size: 24rpx;
+              line-height: 1;
+              display: flex;
+              align-items: center;
+              padding-top: 2rpx;
+            }
+          }
+        }
+
+        .delete-action {
+          position: absolute;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          width: 160rpx;
+          background-color: $red;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 0 16rpx 16rpx 0;
+          z-index: 1;
+
+          .delete-text {
+            color: $white;
+            font-size: 32rpx;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+
+  // 加载状态
+  .loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80rpx 0;
+
+    .loading-text {
+      color: $text-light;
+      font-size: 28rpx;
+    }
+  }
+
+  // 错误状态
+  .error-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 80rpx 32rpx;
+    gap: 16rpx;
+
+    .error-icon {
+      font-size: 80rpx;
+    }
+
+    .error-text {
+      color: $text-secondary;
+      font-size: 28rpx;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    .refresh-hint {
+      margin-top: 8rpx;
+      color: $text-light;
+      font-size: 24rpx;
+      text-align: center;
+    }
+  }
+
+  // 空状态 - 移除，使用 Empty 组件自带的样式
+
+  // 编辑弹窗
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: flex-end;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+
+    .modal-content {
+      width: 100%;
+      background-color: $white;
+      border-radius: 32rpx 32rpx 0 0;
+      max-height: 80vh;
+      overflow-y: auto;
+      animation: slideUp 0.3s ease;
+      box-shadow: 0 -8rpx 32rpx rgba(0, 0, 0, 0.1);
+    }
+
+    .modal-header {
+      position: relative;
+      padding: 40rpx 32rpx 32rpx;
+      border-bottom: none;
+
+      .modal-title {
+        font-size: 36rpx;
+        font-weight: bold;
+        color: $text-primary;
+        text-align: center;
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 32rpx;
+        right: 32rpx;
+        width: 56rpx;
+        height: 56rpx;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $text-secondary;
+        font-size: 36rpx;
+        background-color: $background-light;
+        border-radius: 50%;
+        transition: all 0.2s;
+
+        &:active {
+          background-color: #e8ebe8;
+          transform: scale(0.95);
+        }
+      }
+    }
+
+    .modal-body {
+      padding: 32rpx 48rpx 48rpx;
+
+      .form-item {
+        margin-bottom: 56rpx;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        .form-label {
+          display: block;
+          font-size: 28rpx;
+          color: $text-secondary;
+          margin-bottom: 24rpx;
+          font-weight: 500;
+        }
+
+        // 头像选择器
+        .avatar-picker {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 20rpx;
+          background: none;
+          border: none;
+          padding: 32rpx 0;
+
+          &::after {
+            border: none;
+          }
+
+          .avatar-preview {
+            width: 192rpx;
+            height: 192rpx;
+            border-radius: 50%;
+            border: 4rpx solid $primary-color;
+            box-shadow: 0 8rpx 24rpx rgba(19, 236, 19, 0.2);
+            transition: all 0.3s;
+          }
+
+          &:active .avatar-preview {
+            transform: scale(0.95);
+            box-shadow: 0 4rpx 16rpx rgba(19, 236, 19, 0.3);
+          }
+
+          .avatar-tip {
+            font-size: 26rpx;
+            color: $primary-color;
+            font-weight: 500;
+          }
+        }
+
+        // 昵称输入框
+        .nickname-input {
+          width: 100%;
+          height: 96rpx;
+          padding: 0 32rpx;
+          background-color: $background-light;
+          border-radius: 16rpx;
+          font-size: 32rpx;
+          color: $text-primary;
+          border: 2rpx solid transparent;
+          transition: all 0.2s;
+
+          &::placeholder {
+            color: $text-light;
+          }
+
+          &:focus {
+            background-color: $white;
+            border-color: $primary-color;
+            box-shadow: 0 0 0 4rpx rgba(19, 236, 19, 0.1);
+          }
+        }
+      }
+    }
+
+    .modal-footer {
+      display: flex;
+      gap: 24rpx;
+      padding: 24rpx 48rpx 48rpx;
+      border-top: none;
+
+      .cancel-btn,
+      .save-btn {
+        flex: 1;
+        height: 96rpx;
+        font-size: 32rpx;
+        font-weight: 600;
+        border-radius: 48rpx;
+        border: none;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &::after {
+          border: none;
+        }
+      }
+
+      .cancel-btn {
+        background-color: $background-light;
+        color: $text-primary;
+
+        &:active {
+          background-color: #e8ebe8;
+          transform: scale(0.98);
+        }
+      }
+
+      .save-btn {
+        background-color: $primary-color;
+        color: $white;
+        box-shadow: 0 8rpx 24rpx rgba(19, 236, 19, 0.3);
+
+        &:active {
+          background-color: #11d611;
+          transform: scale(0.98);
+          box-shadow: 0 4rpx 16rpx rgba(19, 236, 19, 0.4);
+        }
+      }
+    }
+  }
+
+  // 动画
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+}

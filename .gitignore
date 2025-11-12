@@ -1,0 +1,51 @@
+# 构建输出目录
+dist/
+deploy_versions/
+.temp/
+.rn_temp/
+
+# 依赖目录
+node_modules/
+
+# 系统文件
+.DS_Store
+.swc
+*.local
+
+# 环境变量文件
+.env
+.env.production
+.env.test
+
+# 日志文件
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 编辑器配置
+.vscode/
+.idea/
+.husky/
+*.swp
+*.swo
+*~
+
+# 临时文件
+*.tmp
+*.temp
+.cache/
+
+# 小程序相关
+project.private.config.json
+project.config.json.backup
+
+# 测试覆盖率
+coverage/
+.nyc_output/
+
+# 文档生成
+docs/build/
+
+# google stitch design
+google-stitch-design/

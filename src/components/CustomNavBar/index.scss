@@ -1,0 +1,25 @@
+// 自定义导航栏样式
+.custom-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: #f6f8f6;
+
+  .navbar-content {
+    height: 88rpx; // 导航栏内容高度
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    .navbar-title {
+      font-size: 36rpx; // 可调整字体大小
+      font-weight: 600; // 可调整字体粗细
+      color: #1f2937;
+      letter-spacing: 2rpx; // 可调整字符间距
+      line-height: 1.2;
+    }
+  }
+}
